@@ -5,9 +5,10 @@ import (
 )
 
 const (
-	ALBHABET_SIZE = 10000
+	ALBHABET_SIZE = 1000
 )
 
+//TrieNode -  to define trieNode structure
 type TrieNode struct {
 	childrens    [ALBHABET_SIZE]*TrieNode
 	Char         string
@@ -16,20 +17,28 @@ type TrieNode struct {
 	MinHeapIndex int
 }
 
+// trie define trie structure
 type trie struct {
 	Root *TrieNode
 }
 
+/**
+Trie constructor
+**/
 func NewTrie() *trie {
 	return &trie{
 		Root: &TrieNode{MinHeapIndex: -1},
 	}
 }
 
+// isAlpha - to check rune type
 func isAlpha(v rune) bool {
 	return unicode.IsLetter(v)
 }
 
+/**
+Insert to insert new word into trie
+**/
 func (t *trie) Insert(word string) *TrieNode {
 	wordRuneSlice := []rune(word)
 	current := t.Root

@@ -84,14 +84,13 @@ func main() {
 		words := strings.Split(line, " ")
 		for i := 0; i < len(words); i++ {
 			currentWord := words[i] //strings.ToLower(words[i])
-			// fmt.Println(currentWord)
 			result := t.Insert(currentWord)
 
-			if result == nil {
-				fmt.Println("Word is: ", words[i])
-				fmt.Println("ignoring current word which contains special char/rune")
-				continue
-			}
+			// if result == nil {
+			// 	fmt.Println("Word is: ", words[i])
+			// 	fmt.Println("ignoring current word which contains special char/rune")
+			// 	continue
+			// }
 
 			h.Insert(result, words[i])
 		}

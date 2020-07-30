@@ -8,16 +8,20 @@ import (
 
 const MaxheapSize int = 20
 
+//minHeapNode structure
 type minHeapNode struct {
 	Word      string
 	Frequency int
 	trNode    *trie.TrieNode
 }
+
+//minHeap structure
 type minHeap struct {
 	heapSlice   []*minHeapNode
 	currentSize int
 }
 
+//minHeap constructor
 func NewMinheap() *minHeap {
 	return &minHeap{
 		heapSlice:   make([]*minHeapNode, MaxheapSize),
@@ -25,6 +29,7 @@ func NewMinheap() *minHeap {
 	}
 }
 
+//Insert -  to insert/update heap node based on given trie node
 func (heap *minHeap) Insert(currentTrieNode *trie.TrieNode, word string) {
 
 	if currentTrieNode.MinHeapIndex != -1 {
@@ -83,6 +88,8 @@ func (heap *minHeap) MinHeapify(index int) {
 	}
 
 }
+
+// to swap heap nodes
 func (heap *minHeap) swap(idx1 int, idx2 int) {
 
 	heap.heapSlice[idx1].trNode.MinHeapIndex = idx2
